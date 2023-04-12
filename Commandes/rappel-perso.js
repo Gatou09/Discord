@@ -12,7 +12,7 @@ module.exports = {
 
         // Create the modal
 		const modal = new ModalBuilder()
-			.setCustomId('Rappel')
+			.setCustomId('Mémo')
 			.setTitle('Mémo');
 
 		// Add components to modal

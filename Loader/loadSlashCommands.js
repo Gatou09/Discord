@@ -13,9 +13,6 @@ module.exports = async bot => {
         .setDescription(command.description)
         .setDMPermission(command.dm)
         .setDefaultMemberPermissions(command.permission === "Aucune" ? null : command.permission)
-        // .addStringOption(option =>
-        //     option.setName('input')
-        //         .setDescription('The input to echo back'));
 
         if(command.option?.length >=1 )
         {

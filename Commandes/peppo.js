@@ -9,8 +9,6 @@ module.exports = {
 
     async run(bot, message) {
 
-        // console.log(message.options.getString('input'))
-
         await message.reply(`
         05 61 01 89 93
 https://www.facebook.com/Peppospizzza/?locale=fr_FR`)
