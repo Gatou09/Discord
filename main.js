@@ -5,6 +5,7 @@ const loadCommands = require("./Loader/loadCommands")
 const loadEvents = require("./Loader/loadEvents")
 const config = require("./config")
 const { ActionRowBuilder, Events, ModalBuilder, TextInputBuilder, TextInputStyle, StringSelectMenuBuilder, } = require('discord.js');
+const mysql = require("mysql");
 
 bot.commands = new Discord.Collection()
 
@@ -21,13 +22,27 @@ bot.on(Events.InteractionCreate, async interaction => {
 		await interaction.reply({content: "Le rappel a bien été enregistré :thumbsup:", ephemeral: true })
 	}
 
-	const dateRappel = interaction.fields.getTextInputValue('memo');
+	const nom = interaction.fields.getTextInputValue('memo');
 	const sujetRappel = interaction.fields.getTextInputValue('sujetMemo');
 	const userId = interaction.user.id;
 
-	console.log(dateRappel, sujetRappel, userId);
+	console.log(nom, sujetRappel, userId);
 	
 	const user = await bot.users.fetch(userId);
 	user.send(sujetRappel);
+
+     //Connexion à la BD
+    const mysqlconnexion = mysql.createConnection({
+        host: 'localhost',
+        database: 'db_bot',
+        user:'root',
+        password:''
+    })
+    //requete insertion données 
+    var post  = {Nom: nom, Sujet: sujetRappel, idU: `<@!${userId}>` };
+    var query = mysqlconnexion.query('INSERT INTO memo SET ?', post, function (error, results, fields) {
+    if (error) throw error;
+    });
+    console.log(query.sql);
 });	
 
