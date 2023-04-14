@@ -27,9 +27,6 @@ bot.on(Events.InteractionCreate, async interaction => {
 	const userId = interaction.user.id;
 
 	console.log(nom, sujetRappel, userId);
-	
-	const user = await bot.users.fetch(userId);
-	user.send(sujetRappel);
 
      //Connexion à la BD
     const mysqlconnexion = mysql.createConnection({
@@ -39,7 +36,7 @@ bot.on(Events.InteractionCreate, async interaction => {
         password:''
     })
     //requete insertion données 
-    var post  = {Nom: nom, Sujet: sujetRappel, idU: `<@!${userId}>` };
+    var post  = {Nom: nom, Sujet: sujetRappel, idU: userId};
     var query = mysqlconnexion.query('INSERT INTO memo SET ?', post, function (error, results, fields) {
     if (error) throw error;
     });

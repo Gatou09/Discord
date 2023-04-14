@@ -21,7 +21,7 @@ module.exports = {
 		const memo = new TextInputBuilder()
 					.setCustomId('memo')
 					.setRequired(true)
-					.setLabel("Nom")
+					.setLabel("Titre")
 					.setStyle(TextInputStyle.Short);
 
 		const sujetMemo = new TextInputBuilder()
