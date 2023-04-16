@@ -4,7 +4,7 @@ const bot = new Discord.Client({ intents })
 const loadCommands = require("./Loader/loadCommands")
 const loadEvents = require("./Loader/loadEvents")
 const config = require("./config")
-const { ActionRowBuilder, Events, ModalBuilder, TextInputBuilder, TextInputStyle, StringSelectMenuBuilder, } = require('discord.js');
+const {Events} = require('discord.js');
 const mysql = require("mysql");
 
 bot.commands = new Discord.Collection()
